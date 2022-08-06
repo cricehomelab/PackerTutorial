@@ -61,7 +61,7 @@ source "proxmox" "ubuntu-server-jammy" {
         firewall = "false"
     }
     
-    # Cloud Iniet settings
+    # Cloud Init settings
     cloud_init = true
     cloud_init_storage_pool = "local-lvm"
 
@@ -78,8 +78,7 @@ source "proxmox" "ubuntu-server-jammy" {
     boot_wait = "5s"
 
     # PACKER autoinstall settings
-    http_directory = "C:\\temp\\packerimages\\linux\\tutorial\\ubuntu-server\\http"
-    # I think this is where i can set a static IP here
+    http_directory = "C:\\temp\\packerimages\\linux\\tutorial\\ubuntu-server\\http"    
 
     ssh_username = "charlie"
     ssh_password = "${var.proxmox_ssh_password_secret}"
