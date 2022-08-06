@@ -1,0 +1,8 @@
+Providing link of tutorial files I have been working through
+https://github.com/xcad2k/boilerplates/blob/main/packer/proxmox/ubuntu-server-jammy
+https://www.youtube.com/watch?v=vOV74gevFgs&t=79s
+
+Used this tutorial style guide to start setting up and working with Packer. 
+
+My thought process has been to essentially copy the crap out of the templating and compare settings to doing things in less automated manners in order to 
+get some comparison try to find what settings I'm effecting where. 
