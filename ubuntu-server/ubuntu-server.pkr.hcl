@@ -3,10 +3,10 @@
 variable "proxmox_api_url" {
     type = string
 }
-variable "proxmox_api_token_id" {
+variable "proxmox_api_token" {
     type = string
 }
-variable "proxmox_api_token_secret" {
+variable "proxmox_token_secret" {
     type = string
     sensitive = true
 }
@@ -19,10 +19,10 @@ variable "proxmox_ssh_password_secret" {
 source "proxmox" "ubuntu-server" {
     # Proxmox connection settings
     proxmox_url = "${var.proxmox_api_url}"
-    username = "${var.proxmox_api_token_id}"
-    token = "${var.proxmox_api_token_secret}"
+    username = "${var.proxmox_api_token}"
+    token = "${var.proxmox_token_secret}"
     # Skip TLS Verification
-    insecure_skip_tls_veriy = true
+    insecure_skip_tls_verify = true
 
     node = "pve1"
     vm_id = "901"
@@ -42,8 +42,8 @@ source "proxmox" "ubuntu-server" {
 
     disks {
         disk_size = "32G"
-        format = "qcow2"
-        sotrage_pool = "local-lvm"
+        format = "raw"
+        storage_pool = "local-lvm"
         storage_pool_type = "lvm"
         type = "virtio"
     }
@@ -78,7 +78,7 @@ source "proxmox" "ubuntu-server" {
     boot_wait = "5s"
 
     # PACKER autoinstall settings
-    http_directory = "http"
+    http_directory = "C:\\temp\\packerimages\\linux\\tutorial\\ubuntu-server\\http"
     # I think this is where i can set a static IP here
 
     ssh_username = "charlie"
@@ -88,7 +88,7 @@ source "proxmox" "ubuntu-server" {
 
 build {
     name = "ubuntu-server"
-    soruces = ["source.proxmox.ubuntu-server"]
+    sources = ["source.proxmox.ubuntu-server"]
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
     provisioner "shell" {
@@ -106,7 +106,7 @@ build {
     }
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #2
     provisioner "file" {
-        source = "files/99-pve.cfg"
+        source = "C:\\temp\\packerimages\\linux\\tutorial\\ubuntu-server\\files\\99-pve.cfg"
         destination = "tmp/99-pve.cfg"
     }
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #3
