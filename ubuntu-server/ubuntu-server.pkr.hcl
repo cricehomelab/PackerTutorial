@@ -16,7 +16,7 @@ variable "proxmox_ssh_password_secret" {
 }
 
 # Resource Definition for the VM template
-source "proxmox" "ubuntu-server" {
+source "proxmox" "ubuntu-server-jammy" {
     # Proxmox connection settings
     proxmox_url = "${var.proxmox_api_url}"
     username = "${var.proxmox_api_token}"
@@ -25,7 +25,7 @@ source "proxmox" "ubuntu-server" {
     insecure_skip_tls_verify = true
 
     node = "pve1"
-    vm_id = "902"
+    vm_id = "901"
     vm_name = "ubuntu-server"
     template_description = "Ubuntu Server template image."
 
@@ -70,8 +70,8 @@ source "proxmox" "ubuntu-server" {
         "<esc><wait>",
         "e<wait>",
         "<down><down><down><end>",
-        "<bs><bs><bs><bs><wait>",
-        "autoinstall ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ---<wait>",
+        "<bs><bs><bs><bs><wait>",    
+        "autoinstall ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ---<wait>",   
         "<f10><wait>"
     ]
     boot = "c"
@@ -87,8 +87,8 @@ source "proxmox" "ubuntu-server" {
 }
 
 build {
-    name = "ubuntu-server"
-    sources = ["source.proxmox.ubuntu-server"]
+    name = "ubuntu-server-jammyu"
+    sources = ["source.proxmox.ubuntu-server-jammy"]
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
     provisioner "shell" {
