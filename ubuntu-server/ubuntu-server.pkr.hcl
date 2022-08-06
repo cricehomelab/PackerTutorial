@@ -27,7 +27,7 @@ source "proxmox" "ubuntu-server" {
     node = "pve1"
     vm_id = "901"
     vm_name = "ubuntu-server"
-    template_description == "Ubuntu Server template image."
+    template_description = "Ubuntu Server template image."
 
     # Using local ISO
     iso_file = "local:iso/ubuntu-22.04-live-server-amd64.iso"
@@ -91,7 +91,7 @@ build {
     soruces = ["source.proxmox.ubuntu-server"]
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
-    provisioner = "shell" {
+    provisioner "shell" {
         inline = [
             "while [ ! -f /var/lib/cloud/instance/boot-finished ]; do echo 'Waiting for cloud-init...'; sleep 1; done",
             "sudo rm /etc/ssh/ssh_host_*",
