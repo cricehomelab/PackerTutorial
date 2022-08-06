@@ -20,7 +20,7 @@ autoinstall:
       size: 0
   user-data:
     package_upgrade: false
-    timezone: Europe/Berlin
+    timezone: America/New_York
     users:
       - name: #USERNAME HERE
         groups: [adm, sudo]
