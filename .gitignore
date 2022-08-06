@@ -1,1 +1,2 @@
 credentials.packer.hcl
+ubuntu-server/http/user-data
