@@ -6,3 +6,9 @@ Used this tutorial style guide to start setting up and working with Packer.
 
 My thought process has been to essentially copy the crap out of the templating and compare settings to doing things in less automated manners in order to 
 get some comparison try to find what settings I'm effecting where. 
+
+This is pretty hard stuck trying to boot up from the template. 
+Things look to be working but the VM gets stuck before it gets to the install options.
+"Finished Load AppArmor profiles managed internally by snapd." is where it gets stuck after the autoinstall command. 
+
+I've spent a few hours on it will likely come back to this after I learn a bit more about this. 
