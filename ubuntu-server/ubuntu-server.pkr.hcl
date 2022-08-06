@@ -25,7 +25,7 @@ source "proxmox" "ubuntu-server" {
     insecure_skip_tls_verify = true
 
     node = "pve1"
-    vm_id = "901"
+    vm_id = "902"
     vm_name = "ubuntu-server"
     template_description = "Ubuntu Server template image."
 
